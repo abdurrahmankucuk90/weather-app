@@ -1,10 +1,14 @@
 
 import './App.css';
+import Header from './components/Header';
+import WeatherPage from './pages/WeatherPage';
+import './app.scss'
 
 function App() {
   return (
     <div className="App">
-      <h1>app</h1>
+      <Header/>
+      <WeatherPage/>
     </div>
   );
 }
