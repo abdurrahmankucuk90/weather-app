@@ -1,8 +1,16 @@
-@import '../variables';
+@import "../variables";
 
-.card{
-    background-color: white;
-    width: 20rem;
-    height: 20rem;
-    
+.card {
+  background-color: white;
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
 }
