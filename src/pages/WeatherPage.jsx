@@ -6,7 +6,7 @@ import "./weatherApp.scss";
 const WeatherPage = () => {
   const [weather, setWeather] = useState("");
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("Bursa");
 
   const api = {
     api_key: process.env.REACT_APP_WEATER_API,
@@ -28,18 +28,17 @@ const WeatherPage = () => {
   };
 
   const handleChange = (e) => {
-    setQuery(e.target.value);
+    setQuery(e.target.value.toUpperCase());
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     getApi();
-    console.log(weather?.main);
+    console.log(weather);
   };
 
-//   useEffect(() => {
-//     getApi();
-//     console.log(weather?.main);
-//   }, []);
+  useEffect(() => {
+    // getApi();
+  }, []);
 
   return (
     <div className="container">
@@ -54,9 +53,7 @@ const WeatherPage = () => {
           <button className="searchButton">Search</button>
         </form>
       </div>
-      <div className="display">
-        <Card />
-      </div>
+      {weather && <Card weather={weather} />}
     </div>
   );
 };

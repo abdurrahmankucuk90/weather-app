@@ -9,8 +9,36 @@
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
+  box-shadow: $ShadowMaterial;
+  text-align: center;
+  overflow: hidden;
+  
   h1 {
     width: 100%;
     text-align: center;
+  }
+  .info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: .2rem;
+margin-top: -2rem;
+    h6 {
+      width: 50%;
+      // font-size: 1rem;
+      font-weight: 800;
+    }
+    .weatherD {
+      width: 100%;
+      // margin-top: -1;
+    }
+    img {
+      text-align: center;
+      margin-top: -1rem;
+      background-color: $LightGreen;
+      border-radius: 50%;
+    }
   }
 }

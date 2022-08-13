@@ -1,13 +1,28 @@
-import './card.scss'
+import { toBeEmpty } from "@testing-library/jest-dom/dist/matchers";
+import "./card.scss";
 
-const Card = () => {
+const Card = ({ weather }) => {
+  // const {temp, feels_like, humidity} = weather.main
+  console.log(weather.weather[0].description);
+
   return (
-    <div className='card'>
-      <h1>Nev Vegas</h1>
-      <h6>50Celcius</h6>
-      <h6>40Feel Like</h6>
+    <div className="card" key={weather.id}>
+      <h1> {weather.name} </h1>
+      <div className="info">
+        <h6>Temp: {weather.main?.temp}</h6>
+        <h6>Feel like: {weather.main?.feels_like}</h6>
+        <h6>Humidity: {weather.main?.humidity}</h6>
+        <h6>Wind speed: {weather.wind?.speed}</h6>
+        <h6 className="weatherD">Weather: {weather?.weather[0].description.toUpperCase()}</h6>
+        <div className="icon">
+          <img
+            src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}.png`}
+            alt=""
+          />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
