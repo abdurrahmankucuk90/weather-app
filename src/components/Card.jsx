@@ -1,13 +1,21 @@
-import { toBeEmpty } from "@testing-library/jest-dom/dist/matchers";
+// import { toBeEmpty } from "@testing-library/jest-dom/dist/matchers";
+import { useEffect, useState } from "react";
 import "./card.scss";
 
-const Card = ({ weather }) => {
+const Card = ({ weather, countryUrl}) => {
+ 
+  
+
+  
+
+
   // const {temp, feels_like, humidity} = weather.main
-  console.log(weather.weather[0].description);
+  // console.log(flag);
 
   return (
     <div className="card" key={weather.id}>
-      <h1> {weather.name} </h1>
+      <h1> {weather.name} <img src={countryUrl} style={{"width": "50px"}} alt="" /> </h1>
+   
       <div className="info">
         <h6>Temp: {weather.main?.temp}</h6>
         <h6>Feel like: {weather.main?.feels_like}</h6>

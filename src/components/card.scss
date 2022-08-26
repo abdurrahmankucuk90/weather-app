@@ -12,6 +12,11 @@
   box-shadow: $ShadowMaterial;
   text-align: center;
   overflow: hidden;
+  @media (max-width:500px){
+    .card{
+      width: 100%;
+    }
+  }
   
   h1 {
     width: 100%;

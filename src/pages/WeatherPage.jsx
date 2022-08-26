@@ -7,6 +7,8 @@ const WeatherPage = () => {
   const [weather, setWeather] = useState("");
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("Bursa");
+  const [country, setCountry] = useState('TR')
+  const countryUrl = `https://countryflagsapi.com/png/${country}`
 
   const api = {
     api_key: process.env.REACT_APP_WEATER_API,
@@ -15,17 +17,29 @@ const WeatherPage = () => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=
     ${query}&units=metric&appid=${api.api_key}`;
 
+
   const getApi = async () => {
     setLoading(true);
     try {
       const { data } = await axios.get(url);
       setWeather(data);
-      setLoading(false);
+      setLoading(false); 
+      
+    
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
   };
+  // const getFlagApi = async () => {
+  //   // console.log(weather?.sys.country)
+  //   try {
+  //     const {data} = await axios.get(countryUrl)
+  //     setFlag(data)
+  //   } catch (error) {
+      
+  //   }
+  // }
 
   const handleChange = (e) => {
     setQuery(e.target.value.toUpperCase());
@@ -33,12 +47,17 @@ const WeatherPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getApi();
-    console.log(weather);
+  
+    // getFlagApi()
+    // console.log(weather);
   };
 
   useEffect(() => {
-    // getApi();
-  }, []);
+    if(weather){
+
+      setCountry(weather?.sys.country)
+    }
+  }, [weather]);
 
   return (
     <div className="container">
@@ -53,7 +72,7 @@ const WeatherPage = () => {
           <button className="searchButton">Search</button>
         </form>
       </div>
-      {weather && <Card weather={weather} />}
+      {weather && <Card weather={weather} countryUrl={countryUrl}  />}
     </div>
   );
 };
